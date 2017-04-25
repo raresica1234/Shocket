@@ -21,6 +21,9 @@
     <ClInclude Include="include\sh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\net\socket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\shocket.cpp">
