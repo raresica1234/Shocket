@@ -1,6 +1,6 @@
 #include "shocket.h"
 
-#include <winsock.h>
+#include <Winsock2.h>
 
 namespace SH {
 
