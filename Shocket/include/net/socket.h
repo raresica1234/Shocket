@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include <sh.h>
 
 #include <winsock.h>
@@ -15,6 +16,7 @@ enum SH_SOCKET_TYPE {
 };
 
 typedef void(*SH_RECEIVE_CALLBACK)(const char* ip, unsigned short port, void* data, unsigned int size);
+
 
 class SHAPI Socket {
 private:
@@ -57,8 +59,6 @@ public:
 };
 
 class SHAPI UDPSocket : public Socket {
-protected:
-
 public:
 	UDPSocket(unsigned short port);
 };
