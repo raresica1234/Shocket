@@ -40,10 +40,10 @@ protected:
 public:
 	virtual ~Socket();
 
-	virtual void Listen();
-	virtual Socket* Accept() const;
+	virtual void Listen() = 0;
+	virtual Socket* Accept() const = 0;
 
-	virtual bool Connect(const char* ip, unsigned short port);
+	virtual bool Connect(const char* ip, unsigned short port) = 0;
 	virtual void Send(const void* data, unsigned int size);
 
 	void SetReceiveCallback(SH_RECEIVE_CALLBACK callback);
@@ -61,13 +61,21 @@ public:
 class SHAPI UDPSocket : public Socket {
 public:
 	UDPSocket(unsigned short port);
+
+	void Listen() override;
+	Socket* Accept() const override;;
+
+	bool Connect(const char* ip, unsigned short port) override;
 };
 
 class SHAPI TCPSocket : public Socket {
 public:
 	TCPSocket(unsigned short port);
 
+	void Listen() override;
+	Socket* Accept() const override;;
 
+	bool Connect(const char* ip, unsigned short port) override;
 };
 
 }

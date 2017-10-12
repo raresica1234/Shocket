@@ -5,26 +5,11 @@
 
 using namespace SH;
 
-
-
-DWORD WINAPI recvFunc(LPVOID param) {
-	TCPSocket* recvSocket = new TCPSocket(8192);
-
-	recvSocket->Listen();
-	printf("Listening\n");
-	Socket* sock = recvSocket->Accept();
-
-	sock->SetReceiveCallback([](const char* ip, unsigned short port, void* data, unsigned int size) -> void {
-		printf("Recv From: %s:%u Data: %s\n", ip, port, data);
-	});
-
-	return 0;
-}
-
 int main() {
 
 	ShocketInitWinsock();
 
+#if 1
 	// set up for receiving stuff
 	TCPSocket* recvSocket = new TCPSocket(8192);
 
@@ -36,10 +21,9 @@ int main() {
 		printf("Recv From: %s:%u Data: %s\n", ip, port, data);
 	});
 
-	return 0;
-
+	system("PAUSE");
 	//connecting and sending
-
+#else
 	
 	TCPSocket* sendSocket = new TCPSocket(8191);
 
@@ -55,6 +39,8 @@ int main() {
 
 	system("PAUSE");
 
+
+#endif
 	ShocketCleanupWinsock();
 
 }
